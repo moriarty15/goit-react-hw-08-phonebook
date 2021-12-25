@@ -11,7 +11,8 @@ const itemsReducer = createReducer([], {
         return action.payload
     },
     [addContactAsyncThunk.fulfilled]: (state, action) => {
-        return [action.payload ,...state]
+        console.log(state, action)
+        return [action.payload.data, ...state]
     },
     [deleteContactAsyncThunk.fulfilled]: (state, action) => {
         return state = state.filter((item) => item.id !== action.payload)

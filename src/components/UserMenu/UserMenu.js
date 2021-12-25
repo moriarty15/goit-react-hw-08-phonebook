@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import operations from "../../redux/auth/auth-operations";
 import authSelectors from "../../redux/auth/auth-selector";
+import operations from "../../redux/auth/auth-operations";
 
 
 export default function UserMenu() {
     const dispatch = useDispatch();
-    const name = useSelector(authSelectors.getUserName);
+    const UserName = useSelector(authSelectors.getUserName)
     return (
         <>
-            <h3>UserEmail</h3>
-            <button>Logout</button>
+            {UserName && <h3>Hello {UserName}!</h3>}
+            <button type="button" onClick={()=>dispatch(operations.logOut())}>Logout</button>
         </>
     )
 }

@@ -17,10 +17,10 @@ const ContactList = () => {
       {" "}
       {contacts.length > 0 && (
         <ul className="Contact__list">
-          {contacts.map(({ id, name, Phone }) => {
+          {contacts.map(({ id, name, number }) => {
             return (
               <li key={id} className="Contact__item">
-                <ContactListItem name={name} number={Phone} id={id} />
+                <ContactListItem name={name} number={number} id={id} />
               </li>
             );
           })}
