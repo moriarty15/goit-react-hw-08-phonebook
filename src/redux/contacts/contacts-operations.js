@@ -8,8 +8,7 @@ export const fetchContactsAsyncThunk = createAsyncThunk(
   async () => {
     try {
       const { data } = await axios.get('/contacts');
-      console.log(data)
-      return data;
+      return data.reverse();
       // const contacts = await fetchRequest();
       // return contacts.reverse();
     } catch (error) {

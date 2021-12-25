@@ -1,46 +1,69 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, Suspense, lazy } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import operations from "./redux/auth/auth-operations";
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter/Filter";
 import Container from "./components/Container";
-import HomePage from "./components/HomePage/HomePage";
-import NotFoundView from "./components/NotFoundView";
-import Register from "./components/Register";
-import Login from "./components/Login";
+// import HomePage from "./components/HomePage/HomePage";
+// import NotFoundView from "./components/NotFoundView";
+// import Register from "./components/Register";
+// import Login from "./components/Login";
 import AppBar from "./components/AppBar";
-import { Switch, Route } from "react-router";
+import { Switch } from "react-router";
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+import authSelectors from "./redux/auth/auth-selector";
+
+const HomePage = lazy(() => import("./components/HomePage/HomePage"));
+const Register = lazy(() => import("./components/Register"));
+const Login = lazy(() => import("./components/Login"));
 
 function App() {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(authSelectors.getIsRefreshing);
   useEffect(() => {
     dispatch(operations.fetchCurrentUser());
   }, [dispatch]);
   return (
-    <Container>
-      <AppBar />
-      <Switch>
-        <Route path="/" exact>
+    !isRefreshing && (
+      <Container>
+        <AppBar />
+        <Switch>
+          <Suspense  fallback={<p>Загружаем...</p>}>
+            <PublicRoute path="/" exact>
+              <HomePage />
+            </PublicRoute>
+
+            <PublicRoute path="/register" exact restricted>
+              <Register />
+            </PublicRoute>
+            <PublicRoute path="/login" exact restricted redirectTo="/contacts">
+              <Login />
+            </PublicRoute>
+            <PrivateRoute path="/contacts" exact>
+              <ContactForm />
+              <Filter />
+              <ContactList />
+            </PrivateRoute>
+            {/* <Route>
+              <NotFoundView />
+            </Route> */}
+          </Suspense>
+
+          {/* без публичных и приватных маршрутов */}
+          {/* <Route path="/" exact>
           <HomePage />
-        </Route>
-        <Route path="/register" exact>
+        </Route> */}
+          {/* <Route path="/register" exact>
           <Register />
         </Route>
         <Route path="/login" exact>
           <Login />
-        </Route>
-        <Route path="/contacts" exact>
-          <ContactForm />
-          <h2>Contacts</h2>
-          <Filter />
-          <ContactList />
-        </Route>
-        <Route>
-          <NotFoundView />
-        </Route>
-      </Switch>
-    </Container>
+        </Route> */}
+        </Switch>
+      </Container>
+    )
   );
 }
 

@@ -31,21 +31,41 @@ export default function Register() {
 
   return (
     <>
-      <h1>Страница регистрации</h1>
+      <h3>Страница регистрации</h3>
       <form onSubmit={handleSubmit}>
-        <label>
-          name:
-          <input type="text" name="name" value={name} onChange={handleChange} />
+        <label className="label">
+          Name:
+          <input
+            className="input"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
         </label>
-        <label>
-          email:
-          <input  type="email" name="email" value={email} onChange={handleChange}  />
+        <label className="label">
+          Email:
+          <input
+            className="input"
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+          />
         </label>
-        <label>
-          password
-          <input  type="password" name="password" value={password} onChange={handleChange}  />
+        <label className="label">
+          Password
+          <input
+            className="input"
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
         </label>
-        <button type="submit">Зарегистрироваться</button>
+        <button className="add__button" type="submit">
+          Зарегистрироваться
+        </button>
       </form>
     </>
   );

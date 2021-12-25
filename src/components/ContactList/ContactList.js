@@ -4,18 +4,20 @@ import "./ContactList.scss";
 import ContactListItem from "./ContactListItem";
 import { useSelector, useDispatch } from "react-redux";
 import { getVisibleContacts } from "../../redux/contacts/contacts-selector";
-import {fetchContactsAsyncThunk} from "../../redux/contacts/contacts-operations";
+import { fetchContactsAsyncThunk } from "../../redux/contacts/contacts-operations";
+import LoaderFoo from "../Loader/Loader";
 
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getVisibleContacts);
   useEffect(() => {
-    dispatch(fetchContactsAsyncThunk())
-  }, [dispatch])
+    dispatch(fetchContactsAsyncThunk());
+  }, [dispatch]);
   return (
     <>
       {" "}
-      {contacts.length > 0 && (
+      <h2 className="contactList__title">Contacts</h2>
+      {contacts.length > 0 ? (
         <ul className="Contact__list">
           {contacts.map(({ id, name, number }) => {
             return (
@@ -25,7 +27,7 @@ const ContactList = () => {
             );
           })}
         </ul>
-      )}
+      ) : <LoaderFoo/>}
     </>
   );
 };

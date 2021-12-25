@@ -27,11 +27,12 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Страница логина</h1>
+      <h3>Страница логина</h3>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="label">
           Email:
           <input
+            className="input"            
             type="email"
             name="email"
             value={email}
@@ -41,13 +42,14 @@ export default function Login() {
         <label>
           password:
           <input
+            className="input"            
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
               </label>
-              <button type="submit" >Войти</button>
+              <button type="submit" className="add__button">Войти</button>
       </form>
     </div>
   );
