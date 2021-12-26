@@ -4,10 +4,10 @@ import operations from "../../redux/auth/auth-operations";
 
 export default function UserMenu() {
   const dispatch = useDispatch();
-  const UserName = useSelector(authSelectors.getUserName).toUpperCase();
+  const UserName = useSelector(authSelectors.getUserName)
   return (
     <>
-      {UserName && <h3>Hello {UserName}!</h3>}
+      {UserName ? <h3>Hello {UserName.toUpperCase()}!</h3> : <h3>Hello Guest!</h3>}
       <button
         className="add__button logout"
         type="button"

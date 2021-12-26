@@ -35,7 +35,7 @@ function App() {
               <HomePage />
             </PublicRoute>
 
-            <PublicRoute path="/register" exact restricted>
+            <PublicRoute path="/register" exact restricted  redirectTo="/contacts">
               <Register />
             </PublicRoute>
             <PublicRoute path="/login" exact restricted redirectTo="/contacts">

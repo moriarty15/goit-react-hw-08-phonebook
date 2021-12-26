@@ -12,7 +12,7 @@ export default function PublicRoute({
   const shouldRedirect = isLoggedIn && restricted;
   return (
     <Route {...routeProps}>
-      {shouldRedirect ? <Redirect to="/contacts" /> : children}
+      {shouldRedirect ? <Redirect to={redirectTo} /> : children}
     </Route>
   );
 }

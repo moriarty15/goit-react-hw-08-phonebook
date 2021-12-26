@@ -5,7 +5,6 @@ import ContactListItem from "./ContactListItem";
 import { useSelector, useDispatch } from "react-redux";
 import { getVisibleContacts } from "../../redux/contacts/contacts-selector";
 import { fetchContactsAsyncThunk } from "../../redux/contacts/contacts-operations";
-import LoaderFoo from "../Loader/Loader";
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -26,8 +25,9 @@ const ContactList = () => {
               </li>
             );
           })}
-        </ul>
-      ) : <LoaderFoo/>}
+        </ul> 
+      ) : <h3>пока тут нету контактов</h3>}
+     
     </>
   );
 };
