@@ -1,10 +1,23 @@
 .AuthNav__container {
-  display: flex;
+  display: inline-block;
 }
 .AuthNav__link {
-  margin: 10px;
-  color: #1e90ff;
-  font-size: 26px;
+  display: inline-block;
+  color: #046acf;
+  font-size: 22px;
   line-height: 1.2;
   text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.AuthNav__link + .AuthNav__link {
+  margin-left: 10px;
+}
+.AuthNav__link__active {
+  background-color: #ff6b01;
+}
+.AuthNav__link:hover,
+.AuthNav__link:focus,
+.AuthNav__link:active {
+  background-color: #fff;
 }

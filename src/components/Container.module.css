@@ -1,9 +1,29 @@
 .container {
-  width: 1200px;
-  padding: 20px;
+  width: 320px;
+  padding: 10px;
   margin-left: auto;
   margin-right: auto;
 }
 .title {
   text-align: center;
+}
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+}
+@media screen and (min-width: 600px) {
+  .container {
+    width: 600px;
+    padding: 20px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
+}
+body {
+  background-image: url("../imageBGC/klaviatura_noutbuk_gradient_203739_1920x1080.jpg");
+  color: white;
 }

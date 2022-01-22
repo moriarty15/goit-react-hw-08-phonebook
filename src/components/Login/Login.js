@@ -39,8 +39,8 @@ export default function Login() {
             onChange={handleChange}
           />
         </label>
-        <label>
-          password:
+        <label  className="label">
+          Password:
           <input
             className="input"            
             type="password"

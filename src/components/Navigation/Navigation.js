@@ -6,11 +6,11 @@ export default function Navigation() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <>
-      <NavLink to="/" exact className={"AuthNav__link"}>
+      <NavLink to="/" exact className={"AuthNav__link"} activeClassName="AuthNav__link__active">
         Home
       </NavLink>
       {isLoggedIn && (
-        <NavLink to="/contacts" exact className={"AuthNav__link"} >
+        <NavLink to="/contacts" exact className={"AuthNav__link"} activeClassName="AuthNav__link__active">
           Contacts
         </NavLink>
       )}

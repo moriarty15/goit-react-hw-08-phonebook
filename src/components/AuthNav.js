@@ -8,6 +8,7 @@ export default function AuthNav() {
                 className={"AuthNav__link"}
                 to="/register"
                 exact
+                activeClassName="AuthNav__link__active"
             >
                 Регистрация
             </NavLink>
@@ -15,6 +16,7 @@ export default function AuthNav() {
                 className={"AuthNav__link"}                
                 to="/login"
                 exact
+                activeClassName="AuthNav__link__active"
             >
                 Логин
             </NavLink>
